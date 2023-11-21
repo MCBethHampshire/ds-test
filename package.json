@@ -4,9 +4,10 @@
   "description": "Test design system in a package using storybook",
   "main": "index.js",
   "scripts": {
-    "test": "test",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "repository": {
     "type": "git",
