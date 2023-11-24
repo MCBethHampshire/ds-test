@@ -26,15 +26,17 @@ jobs:
       - name: Install Dependencies
         run: yarn
 
+      - name: Build
+        run: npm run build
+
       - name: Create Release Pull Request or Publish to npm
         id: changesets
         uses: changesets/action@main
         with:
 
           # This expects you to have a script called release which does a build for your packages and calls changeset publish
-          commit: 'chore: update versions'
-          title: 'chore: update versions'
-          publish: npm ci publish
+
+          publish: yarn release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
