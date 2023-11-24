@@ -2,15 +2,21 @@
   "name": "ds-test",
   "version": "0.0.1",
   "description": "Test design system in a package using storybook",
-  "main": "index.js",
+  "main": "./dist/index.js",
+  "files": [
+    "lib"
+  ],
+  "module": "./dist/index.esm.js", 
   "scripts": {
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "build": "rollup -c --bundleConfigAsCjs",
+    "release": "yarn build && changeset publish"
   },
   "repository": {
-    "type": "git",
+    "type": "module",
     "url": "ds-test"
   },
   "keywords": [
@@ -40,5 +46,15 @@
     "storybook": "^7.5.3",
     "ts-jest": "^29.1.1",
     "typescript": "^5.3.2"
+  },
+  "dependencies": {
+    "@changesets/cli": "^2.26.2",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "rollup": "^4.5.0",
+    "rollup-plugin-cleaner": "^1.0.0",
+    "rollup-plugin-import-css": "^3.3.5",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-typescript2": "^0.36.0"
   }
 }
